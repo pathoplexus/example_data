@@ -1,0 +1,30 @@
+submissionId	versionComment	sampleCollectionDate	region	geoLocCountry	geoLocAdmin1	geoLocCity	geoLocAdmin2	db	authors
+test_G5016.1	KR105293	2014-08-16	Subsaharan Africa	Sierra Leone	Kenema	Kenema	Hogwarts	genbank	Goba et al
+test_EM_080193	KR817239	2014-06-29	Subsaharan Africa	Liberia	Liberia	Liberia	Hogwarts	genbank	Carroll et al
+test_EM_074351	KR817110	2014-07-22	Subsaharan Africa	Liberia	Lofa	Lofa	Hogwarts	genbank	Carroll et al
+test_LIBR10253	KT725282	2014-09-16	Subsaharan Africa	Liberia	Margibi	Margibi	Hogwarts	genbank	Ladner et al
+test_G3848	KM233110	2014-06-18	Subsaharan Africa	Sierra Leone	Kailahun	Kailahun	Hogwarts	genbank	Gire et al
+test_EM_000027	KR817068	2014-09-01	Subsaharan Africa	Guinea	Guinea	Guinea	Hogwarts	genbank	Carroll et al
+test_LIBR10047	KT725345	2014-10-01	Subsaharan Africa	Liberia	Margibi	Margibi	Hogwarts	genbank	Ladner et al
+test_G4350.1	KR105242	2014-07-14	Subsaharan Africa	Sierra Leone	Kenema	Kenema	Hogwarts	genbank	Goba et al
+test_J0165	KP759703	2014-11-08	Subsaharan Africa	Sierra Leone	Western Urban	Western Urban	Hogwarts	genbank	Tong et al
+test_G3926.2	KR105208	2014-06-22	Subsaharan Africa	Sierra Leone	Kailahun	Kailahun	Hogwarts	genbank	Goba et al
+test_EM_080223	KR817241	2014-07-04	Subsaharan Africa	Liberia	Liberia	Liberia	Hogwarts	genbank	Carroll et al
+test_G4345.1	KR105239	2014-07-18	Subsaharan Africa	Sierra Leone	Kenema	Kenema	Hogwarts	genbank	Goba et al
+test_LIBR10218	KT725284	2014-09-29	Subsaharan Africa	Liberia	Liberia	Liberia	Hogwarts	genbank	Ladner et al
+test_G3807	KM233084	2014-06-15	Subsaharan Africa	Sierra Leone	Kailahun	Kailahun	Hogwarts	genbank	Gire et al
+test_LIBR10224	KT725302	2014-09-26	Subsaharan Africa	Liberia	Montserrado	Montserrado	Hogwarts	genbank	Ladner et al
+test_13031_EMLH	KU296665	2015-05-18	Subsaharan Africa	Sierra Leone	Western Urban	Western Urban	Hogwarts	genbank	Arias et al
+test_G5996.1	KR105337	2014-09-25	Subsaharan Africa	Sierra Leone	Sierra Leone	Sierra Leone	Hogwarts	genbank	Goba et al
+test_DML24708	KT357845	2015-01-28	Subsaharan Africa	Sierra Leone	Kono	Kono	Hogwarts	genbank	Smits et al
+test_15686_EMLK	KU296555	2015-06-30	Subsaharan Africa	Sierra Leone	Kambia	Kambia	Hogwarts	genbank	Arias et al
+test_EM_COY_2015_016617	EM_COY_2015_016617	2015-05-16	Subsaharan Africa	Guinea	Dubreka	Dubreka	Hogwarts	minion	Quick et al
+test_Makona-UK3	KR025228	2015-03-12	Subsaharan Africa	Sierra Leone	Western Area	Western Area	Hogwarts	genbank	Lewandowski et al
+test_EM_000968	KR817085	2014-10-01	Subsaharan Africa	Guinea	Macenta	Macenta	Hogwarts	genbank	Carroll et al
+test_490_EMLH	KU296746	2015-01-30	Subsaharan Africa	Sierra Leone	Sierra Leone	Sierra Leone	Hogwarts	genbank	Arias et al
+test_PL4696	KU296513	2015-03-13	Subsaharan Africa	Sierra Leone	Port Loko	Port Loko	Hogwarts	genbank	Arias et al
+test_MK2788	KU296573	2015-03-07	Subsaharan Africa	Sierra Leone	Bombali	Bombali	Hogwarts	genbank	Arias et al
+test_LIBR10110	KT725387	2014-08-20	Subsaharan Africa	Liberia	Liberia	Liberia	Hogwarts	genbank	Ladner et al
+test_J0102	KP759657	2014-10-27	Subsaharan Africa	Sierra Leone	Port Loko	Port Loko	Hogwarts	genbank	Tong et al
+test_18636_EMLH	KU296460	2015-07-08	Subsaharan Africa	Sierra Leone	Sierra Leone	Sierra Leone	Hogwarts	genbank	Arias et al
+test_V768	KR534588	2014-08-27	Subsaharan Africa	Guinea	Conakry	Conakry	Hogwarts	genbank	Simon-Loriere et al
