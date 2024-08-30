@@ -40,6 +40,7 @@ jobs:
             file_list = []
             for root, dirs, files in os.walk('example_files'):
                 for file in files:
+                    file = file.replace("example_files/", "")
                     if file != 'index.html' and not file.startswith('.'):
                         path = os.path.join(root, file)
                         size = os.path.getsize(path)
