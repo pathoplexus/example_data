@@ -2,8 +2,6 @@ name: Generate Pathoplexus Example Data List
 
 on:
   push:
-  schedule:
-    - cron: '0 0 * * 0'  # Run weekly on Sundays at midnight
 
 jobs:
   build:
@@ -75,7 +73,6 @@ jobs:
                 <style>
                     body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; color: #333; }}
                     .container {{ max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }}
-                    h1 {{ color: #2c3e50; text-align: center; margin-bottom: 20px; }}
                     table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
                     th, td {{ padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }}
                     th {{ background-color: #f2f2f2; font-weight: bold; color: #2c3e50; }}
@@ -85,11 +82,14 @@ jobs:
                     .file-icon {{ margin-right: 10px; color: #7f8c8d; }}
                     .file-size, .file-date {{ color: #7f8c8d; font-size: 0.9em; }}
                     .readme-content {{ margin-bottom: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 5px; }}
+                    .github-link {{ position: absolute; top: 10px; right: 10px; font-size: 24px; color: #333; }}
                 </style>
             </head>
             <body>
                 <div class="container">
-                    <h1>Pathoplexus Example Files</h1>
+                    <a href="https://github.com/loculus-project/example_data" class="github-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github" title="View on GitHub"></i>
+                    </a>
                     <div class="readme-content">
                         {readme_content}
                     </div>
