@@ -38,7 +38,7 @@ jobs:
 
         def generate_html():
             file_list = []
-            for root, dirs, files in os.walk('example_data'):
+            for root, dirs, files in os.walk('example_files'):
                 for file in files:
                     if file != 'index.html' and not file.startswith('.'):
                         path = os.path.join(root, file)
@@ -52,7 +52,7 @@ jobs:
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Pathoplexus Example Data</title>
+                <title>Pathoplexus Example Files</title>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
                 <style>
                     body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; color: #333; }
@@ -70,7 +70,7 @@ jobs:
             </head>
             <body>
                 <div class="container">
-                    <h1>Pathoplexus Example Data</h1>
+                    <h1>Pathoplexus Example Files</h1>
                     <table>
                         <thead>
                             <tr>
@@ -88,7 +88,7 @@ jobs:
                 date_str = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M:%S')
                 html_content += f'''
                     <tr>
-                        <td><a href="example_data/{html.escape(file)}">{icon} {html.escape(file)}</a></td>
+                        <td><a href="example_files/{html.escape(file)}">{icon} {html.escape(file)}</a></td>
                         <td class="file-size">{size_str}</td>
                         <td class="file-date">{date_str}</td>
                     </tr>
