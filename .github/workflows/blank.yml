@@ -2,8 +2,7 @@ name: Generate Pathoplexus Example Data List
 
 on:
   push:
-    branches:
-      - main  # or your default branch name
+
 
 jobs:
   build:
