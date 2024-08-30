@@ -39,7 +39,7 @@ jobs:
 
         def generate_html():
             file_list = []
-            for root, dirs, files in os.walk('.'):
+            for root, dirs, files in os.walk('./example_data/'):
                 for file in files:
                     if file != 'index.html' and not file.startswith('.'):
                         path = os.path.join(root, file)
