@@ -1,7 +1,9 @@
-name: Generate Pathoplexus Example Data Page
+name: Generate Pathoplexus Example Data List
 
 on:
   push:
+    branches:
+      - main  # or your default branch name
 
 jobs:
   build:
@@ -14,9 +16,9 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Generate Pathoplexus example data list
+    - name: Create Python script
       run: |
-        python -c "
+        cat << EOF > generate_list.py
         import os
         import html
         from datetime import datetime
@@ -24,17 +26,17 @@ jobs:
         def get_file_icon(file):
             ext = os.path.splitext(file)[1].lower()
             if ext in ['.fasta', '.fa', '.fna']:
-                return '<i class=\"fas fa-dna\" title=\"FASTA file\"></i>'
+                return '<i class="fas fa-dna" title="FASTA file"></i>'
             elif ext in ['.tsv', '.tab']:
-                return '<i class=\"fas fa-table\" title=\"TSV file\"></i>'
+                return '<i class="fas fa-table" title="TSV file"></i>'
             elif ext in ['.py', '.js', '.css', '.html', '.json']:
-                return f'<i class=\"fas fa-file-code\" title=\"{ext[1:]} file\"></i>'
+                return f'<i class="fas fa-file-code" title="{ext[1:]} file"></i>'
             elif ext in ['.jpg', '.jpeg', '.png', '.gif', '.svg']:
-                return f'<i class=\"fas fa-file-image\" title=\"{ext[1:]} file\"></i>'
+                return f'<i class="fas fa-file-image" title="{ext[1:]} file"></i>'
             elif ext in ['.pdf', '.doc', '.docx', '.txt']:
-                return f'<i class=\"fas fa-file-alt\" title=\"{ext[1:]} file\"></i>'
+                return f'<i class="fas fa-file-alt" title="{ext[1:]} file"></i>'
             else:
-                return '<i class=\"fas fa-file\"></i>'
+                return '<i class="fas fa-file"></i>'
 
         def generate_html():
             file_list = []
@@ -106,7 +108,10 @@ jobs:
                 f.write(html_content)
 
         generate_html()
-        "
+        EOF
+
+    - name: Generate Pathoplexus example data list
+      run: python generate_list.py
 
     - name: Commit and push to gh-pages
       run: |
