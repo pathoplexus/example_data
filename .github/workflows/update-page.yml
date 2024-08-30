@@ -40,7 +40,7 @@ jobs:
             file_list = []
             for root, dirs, files in os.walk('example_files'):
                 for file in files:
-                    file = file.replace("example_files/", "")
+                   
                     if file != 'index.html' and not file.startswith('.'):
                         path = os.path.join(root, file)
                         size = os.path.getsize(path)
@@ -84,6 +84,7 @@ jobs:
             '''
 
             for file, size, mtime in sorted(file_list):
+                file = file.replace("example_files/", "")
                 icon = get_file_icon(file)
                 size_str = f'{size/1024:.1f} KB' if size >= 1024 else f'{size} bytes'
                 date_str = datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M:%S')
