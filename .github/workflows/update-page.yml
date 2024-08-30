@@ -2,6 +2,8 @@ name: Generate Pathoplexus Example Data List
 
 on:
   push:
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly on Sundays at midnight
 
 jobs:
   build:
@@ -14,40 +16,55 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install markdown
+
     - name: Create Python script
       run: |
         cat << EOF > generate_list.py
         import os
         import html
         from datetime import datetime
+        import markdown
 
         def get_file_icon(file):
             ext = os.path.splitext(file)[1].lower()
-            if ext in ['.fasta', '.fa', '.fna']:
-                return '<i class="fas fa-dna" title="FASTA file"></i>'
-            elif ext in ['.tsv', '.tab']:
-                return '<i class="fas fa-table" title="TSV file"></i>'
-            elif ext in ['.py', '.js', '.css', '.html', '.json']:
-                return f'<i class="fas fa-file-code" title="{ext[1:]} file"></i>'
-            elif ext in ['.jpg', '.jpeg', '.png', '.gif', '.svg']:
-                return f'<i class="fas fa-file-image" title="{ext[1:]} file"></i>'
-            elif ext in ['.pdf', '.doc', '.docx', '.txt']:
-                return f'<i class="fas fa-file-alt" title="{ext[1:]} file"></i>'
-            else:
-                return '<i class="fas fa-file"></i>'
+            icon_map = {
+                ('.fasta', '.fa', '.fna'): '<i class="fas fa-dna" title="FASTA file"></i>',
+                ('.tsv', '.tab'): '<i class="fas fa-table" title="TSV file"></i>',
+                ('.py', '.js', '.css', '.html', '.json'): '<i class="fas fa-file-code" title="{} file"></i>',
+                ('.jpg', '.jpeg', '.png', '.gif', '.svg'): '<i class="fas fa-file-image" title="{} file"></i>',
+                ('.pdf', '.doc', '.docx', '.txt'): '<i class="fas fa-file-alt" title="{} file"></i>',
+            }
+            
+            for extensions, icon in icon_map.items():
+                if ext in extensions:
+                    return icon.format(ext[1:])
+            return '<i class="fas fa-file"></i>'
+
+        def get_readme_content():
+            try:
+                with open('README.md', 'r') as f:
+                    content = f.read()
+                return markdown.markdown(content)
+            except FileNotFoundError:
+                return "<p>README.md not found.</p>"
 
         def generate_html():
             file_list = []
             for root, dirs, files in os.walk('example_files'):
                 for file in files:
-                   
                     if file != 'index.html' and not file.startswith('.'):
                         path = os.path.join(root, file)
                         size = os.path.getsize(path)
                         mtime = os.path.getmtime(path)
                         file_list.append((path, size, mtime))
 
-            html_content = '''
+            readme_content = get_readme_content()
+
+            html_content = f'''
             <!DOCTYPE html>
             <html lang="en">
             <head>
@@ -56,22 +73,26 @@ jobs:
                 <title>Pathoplexus Example Files</title>
                 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
                 <style>
-                    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; color: #333; }
-                    .container { max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-                    h1 { color: #2c3e50; text-align: center; margin-bottom: 20px; }
-                    table { width: 100%; border-collapse: collapse; }
-                    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }
-                    th { background-color: #f2f2f2; font-weight: bold; color: #2c3e50; }
-                    tr:hover { background-color: #f5f5f5; }
-                    a { color: #3498db; text-decoration: none; }
-                    a:hover { color: #2980b9; }
-                    .file-icon { margin-right: 10px; color: #7f8c8d; }
-                    .file-size, .file-date { color: #7f8c8d; font-size: 0.9em; }
+                    body {{ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f4; color: #333; }}
+                    .container {{ max-width: 800px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }}
+                    h1 {{ color: #2c3e50; text-align: center; margin-bottom: 20px; }}
+                    table {{ width: 100%; border-collapse: collapse; margin-top: 20px; }}
+                    th, td {{ padding: 12px; text-align: left; border-bottom: 1px solid #e0e0e0; }}
+                    th {{ background-color: #f2f2f2; font-weight: bold; color: #2c3e50; }}
+                    tr:hover {{ background-color: #f5f5f5; }}
+                    a {{ color: #3498db; text-decoration: none; }}
+                    a:hover {{ color: #2980b9; }}
+                    .file-icon {{ margin-right: 10px; color: #7f8c8d; }}
+                    .file-size, .file-date {{ color: #7f8c8d; font-size: 0.9em; }}
+                    .readme-content {{ margin-bottom: 30px; padding: 20px; background-color: #f9f9f9; border-radius: 5px; }}
                 </style>
             </head>
             <body>
                 <div class="container">
                     <h1>Pathoplexus Example Files</h1>
+                    <div class="readme-content">
+                        {readme_content}
+                    </div>
                     <table>
                         <thead>
                             <tr>
