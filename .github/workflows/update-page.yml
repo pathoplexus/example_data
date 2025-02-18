@@ -34,7 +34,7 @@ jobs:
             ext = os.path.splitext(file)[1].lower()
             icon_map = {
                 ('.fasta', '.fa', '.fna'): '<i class="fas fa-dna" title="FASTA file"></i>',
-                ('.tsv', '.tab'): '<i class="fas fa-table" title="TSV file"></i>',
+                ('.tsv', '.tab', '.xlsx'): '<i class="fas fa-table" title="Tabular file"></i>',
                 ('.py', '.js', '.css', '.html', '.json'): '<i class="fas fa-file-code" title="{} file"></i>',
                 ('.jpg', '.jpeg', '.png', '.gif', '.svg'): '<i class="fas fa-file-image" title="{} file"></i>',
                 ('.pdf', '.doc', '.docx', '.txt'): '<i class="fas fa-file-alt" title="{} file"></i>',
